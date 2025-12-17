@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:titleTextColor="@android:color/white" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.studentmanager.StudentViewModel" />
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            tools:context=".StudentDetailFragment">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,9 +34,10 @@
                 android:layout_marginTop="4dp"
                 android:autofillHints="username"
                 android:background="@android:drawable/edit_text"
-                android:hint="@string/student_id_hint"
+                android:hint="@string/student_id_hint_detail"
                 android:inputType="text"
                 android:padding="12dp"
+                android:text="@{viewModel.selectedStudent.id}"
                 android:textSize="16sp" />
 
             <TextView
@@ -57,9 +55,10 @@
                 android:layout_marginTop="4dp"
                 android:autofillHints="name"
                 android:background="@android:drawable/edit_text"
-                android:hint="@string/student_name_hint"
+                android:hint="@string/student_name_hint_detail"
                 android:inputType="textPersonName"
                 android:padding="12dp"
+                android:text="@{viewModel.selectedStudent.name}"
                 android:textSize="16sp" />
 
             <TextView
@@ -80,6 +79,7 @@
                 android:hint="@string/student_phone_hint"
                 android:inputType="phone"
                 android:padding="12dp"
+                android:text="@{viewModel.selectedStudent.phone}"
                 android:textSize="16sp" />
 
             <TextView
@@ -100,41 +100,36 @@
                 android:hint="@string/student_address_hint"
                 android:inputType="textPostalAddress"
                 android:padding="12dp"
+                android:text="@{viewModel.selectedStudent.address}"
                 android:textSize="16sp" />
 
             <LinearLayout
-                style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:gravity="end"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnCancel"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#E8DEF8"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="@string/cancel_button"
-                    android:textAllCaps="false"
-                    android:textColor="#6750A4"
+                    android:layout_weight="1"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:padding="12dp"
+                    android:text="@string/update_button"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnSave"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnDelete"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:backgroundTint="#6750A4"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="@string/save_button"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/design_default_color_error"
+                    android:padding="12dp"
+                    android:text="@string/delete_button"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -142,4 +137,4 @@
         </LinearLayout>
 
     </ScrollView>
-</LinearLayout>
+</layout>
