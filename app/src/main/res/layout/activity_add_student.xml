@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:titleTextColor="@android:color/white" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@android:color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã số sinh viên"
+                android:text="@string/student_id_label"
                 android:textColor="#666666"
                 android:textSize="14sp" />
 
@@ -41,8 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:autofillHints="username"
                 android:background="@android:drawable/edit_text"
-                android:hint="Nhập MSSV"
+                android:hint="@string/student_id_hint"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -51,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Họ và tên"
+                android:text="@string/student_name_label"
                 android:textColor="#666666"
                 android:textSize="14sp" />
 
@@ -60,8 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:autofillHints="name"
                 android:background="@android:drawable/edit_text"
-                android:hint="Nhập họ tên"
+                android:hint="@string/student_name_hint"
                 android:inputType="textPersonName"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -70,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Số điện thoại"
+                android:text="@string/student_phone_label"
                 android:textColor="#666666"
                 android:textSize="14sp" />
 
@@ -79,8 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:autofillHints="phone"
                 android:background="@android:drawable/edit_text"
-                android:hint="Nhập số điện thoại"
+                android:hint="@string/student_phone_hint"
                 android:inputType="phone"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -89,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Địa chỉ"
+                android:text="@string/student_address_label"
                 android:textColor="#666666"
                 android:textSize="14sp" />
 
@@ -98,13 +95,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:autofillHints="postalAddress"
                 android:background="@android:drawable/edit_text"
-                android:hint="Nhập địa chỉ"
+                android:hint="@string/student_address_hint"
                 android:inputType="textPostalAddress"
                 android:padding="12dp"
                 android:textSize="16sp" />
 
             <LinearLayout
+                style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -113,25 +112,27 @@
 
                 <Button
                     android:id="@+id/btnCancel"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#E8DEF8"
                     android:paddingStart="24dp"
                     android:paddingEnd="24dp"
-                    android:text="Hủy"
+                    android:text="@string/cancel_button"
                     android:textAllCaps="false"
                     android:textColor="#6750A4"
                     android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btnSave"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:backgroundTint="#6750A4"
                     android:paddingStart="24dp"
                     android:paddingEnd="24dp"
-                    android:text="Lưu"
+                    android:text="@string/save_button"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
@@ -141,4 +142,4 @@
         </LinearLayout>
 
     </ScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

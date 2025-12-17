@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">studentmanager</string>
+    <string name="student_id_label">Mã số sinh viên</string>
+    <string name="student_name_label">Họ và tên</string>
+    <string name="student_phone_label">Số điện thoại</string>
+    <string name="student_address_label">Địa chỉ</string>
+    <string name="student_id_hint">Nhập MSSV</string>
+    <string name="student_name_hint">Nhập họ tên</string>
+    <string name="student_phone_hint">Nhập số điện thoại</string>
+    <string name="student_address_hint">Nhập địa chỉ</string>
+    <string name="cancel_button">Hủy</string>
+    <string name="save_button">Lưu</string>
+    <string name="update_button">Cập nhật</string>
+    <string name="delete_button">Xóa</string>
+    <string name="student_id_hint_detail">MSSV</string>
+    <string name="student_name_hint_detail">Họ tên</string>
+    <string name="student_name_placeholder">Nguyễn Văn A</string>
+    <string name="student_id_placeholder">20200001</string>
 </resources>

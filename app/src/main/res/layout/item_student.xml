@@ -10,7 +10,7 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nguyễn Văn A"
+        android:text="@string/student_name_placeholder"
         android:textSize="18sp"
         android:textColor="#000000"
         android:textStyle="bold" />
@@ -19,7 +19,7 @@
         android:id="@+id/tvId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20200001"
+        android:text="@string/student_id_placeholder"
         android:textSize="14sp"
         android:textColor="#666666"
         android:layout_marginTop="4dp" />
