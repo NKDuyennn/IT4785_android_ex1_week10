@@ -1,46 +1,46 @@
 package com.example.studentmanager
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
-class StudentViewModel : ViewModel() {
+class StudentViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _students = MutableLiveData<MutableList<Student>>(
-        mutableListOf(
-            Student("20200001", "Nguyễn Văn A", "0123456789", "Hà Nội"),
-            Student("20200002", "Trần Thị B", "0987654321", "Hồ Chí Minh"),
-            Student("20200003", "Lê Văn C", "0112233445", "Đà Nẵng")
-        )
-    )
+    private val dataSource: StudentDataSource = StudentDataSource(application)
+    private val _students = MutableLiveData<MutableList<Student>>()
     val students: LiveData<MutableList<Student>> = _students
 
     private val _selectedStudent = MutableLiveData<Student?>()
     val selectedStudent: LiveData<Student?> = _selectedStudent
 
+    init {
+        dataSource.open()
+        if (dataSource.getAllStudents().isEmpty()) {
+            dataSource.addStudent(Student("20200001", "Nguyễn Văn A", "0123456789", "Hà Nội"))
+            dataSource.addStudent(Student("20200002", "Trần Thị B", "0987654321", "Hồ Chí Minh"))
+            dataSource.addStudent(Student("20200003", "Lê Văn C", "0112233445", "Đà Nẵng"))
+        }
+        _students.value = dataSource.getAllStudents().toMutableList()
+    }
+
     fun addStudent(student: Student) {
-        val currentList = _students.value ?: mutableListOf()
-        currentList.add(student)
-        _students.value = currentList
+        dataSource.addStudent(student)
+        _students.value = dataSource.getAllStudents().toMutableList()
     }
 
     fun updateStudent(oldStudentId: String, updatedStudent: Student) {
-        val currentList = _students.value ?: return
-        val index = currentList.indexOfFirst { it.id == oldStudentId }
-        if (index != -1) {
-            currentList[index] = updatedStudent
-            _students.value = currentList
-        }
+        dataSource.updateStudent(oldStudentId, updatedStudent)
+        _students.value = dataSource.getAllStudents().toMutableList()
     }
 
     fun deleteStudent(studentId: String) {
-        val currentList = _students.value ?: return
-        currentList.removeAll { it.id == studentId }
-        _students.value = currentList
+        dataSource.deleteStudent(studentId)
+        _students.value = dataSource.getAllStudents().toMutableList()
     }
 
     fun isStudentIdExists(studentId: String): Boolean {
-        return _students.value?.any { it.id == studentId } ?: false
+        return dataSource.isStudentIdExists(studentId)
     }
 
     fun selectStudent(student: Student) {
@@ -49,5 +49,10 @@ class StudentViewModel : ViewModel() {
 
     fun clearSelectedStudent() {
         _selectedStudent.value = null
+    }
+
+    override fun onCleared() {
+        dataSource.close()
+        super.onCleared()
     }
 }
